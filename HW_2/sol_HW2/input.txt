@@ -1,0 +1,9 @@
+#include<stdio.h>
+int main()
+{
+int cvar=1,dvar=2;  // Declare Variables
+int sum = 0;        // Declare Sum
+sum = cvar + dvar;  // Compute Sum
+printf("Sum : %d",sum);
+return(0);
+}
