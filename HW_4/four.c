@@ -1,5 +1,6 @@
 //code to be added for comparing the 2 searches
 #include <stdio.h>
+#include <string.h>
 
 int binary_search(int arr[], int n, int key)
 {
@@ -42,15 +43,28 @@ int ternary_search(int arr[], int n, int key){
 	return -1;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
-	int n,i;
-	scanf("%d",&n);
+	int n,i,key;
+	scanf("%d",&n,&key);
+	if (argc < 2)
+	{
+		printf("enter t for ternary or b for binary search\n");
+		return 0;
+	}
 	int arr[n];
 	for(i=0; i<n; i++){
-		scanf("%d",&arr[i]);
+		int k = rand();
+		arr[i] = k;
 	}
-	printf("%d %d\n",binary_search(arr,n,3),ternary_search(arr,n,3));
+	if (strcmp(argv[1], "t") == 0)
+		ans = ternary_search(arr, n, key);
+	else if (strcmp(argv[1], "b") == 0)
+		ans = binary_search(arr, n, key);
+	if(ans == -1)
+		printf("Not Found\n");
+	else
+		printf("%d\n",ans);
 	return 0;
 }
 
