@@ -50,12 +50,12 @@ int main(int argc, char* argv[])
 	}
 	if(flag == 1){
 		for(j=0; j<it; j++){
-			printf("%d\n%s\n",found[j]+1,contents[j]);
+			printf("%d\n%s\n",found[j]+1,contents[found[j]]);
 		}
 	}
 	else{
 		for(j=0; j<xit; j++){
-			printf("%d\n%s\n",xfound[j]+1,contents[j]);
+			printf("%d\n%s\n",xfound[j]+1,contents[xfound[j]]);
 		}
 	}
 	return 0;
