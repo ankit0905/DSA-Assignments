@@ -1,26 +1,45 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int compare(const void * a, const void * b)
-{
-   return ( *(int*)a - *(int*)b );
+#define ll long long
+
+ll n,m;
+ll sum=0;
+ll nop[104];
+
+ll check(ll mid){
+	ll pars=0;
+	int i;
+	for( i=0;i<n;i++){
+		if(nop[i]>mid){
+			pars+=mid;
+		}
+		else{
+			pars+=nop[i];
+		}
+	}
+	if(pars >= mid*m)
+		return 1;
+	else
+		return 0;
 }
 
 int main()
 {
-	int n,m,i,ans=0;
-	scanf("%d %d",&n,&m);
-	int players[n];
-	for(i=0; i<n; i++)
-		scanf("%d",&players[i]);
-	qsort(players,n,sizeof(int),compare);
-	while(players[n-m]!=0){
-		ans += players[n-m];
-		int tmp = players[n-m];
-		for(i=n-m; i<n; i++)
-			players[i] -= tmp;
-		qsort(players,n,sizeof(int),compare);
+	int i;
+	scanf("%lld %lld",&n,&m);
+	for(i = 0; i < n; i++){
+		scanf("%lld",&nop[i]);
+		sum+=nop[i];
 	}
-	printf("%d\n",ans);
+	ll l=0;
+	ll r=100000000004;
+	ll t=5;
+	while(l<r){
+		ll mid= (l+r)/2;
+		if(check(mid)==1) {l=mid;}
+		else
+			r=mid-1;
+	}
+	printf("%lld\n",l);
 	return 0;
 }
